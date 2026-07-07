@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antonella Dev — Software Developer</title>
+<meta name="description" content="Portfolio de Antonella Dev, estudiante de Ingeniería en Sistemas Informáticos, desarrolladora full-stack.">
+
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__terminal">
+    <span class="loader__prompt">&gt;</span>
+    <span class="loader__text" id="loaderText"></span><span class="loader__cursor">_</span>
+  </div>
+  <div class="loader__bar"><div class="loader__bar-fill" id="loaderBarFill"></div></div>
+</div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ============ BACKGROUND ============ -->
+<div class="bg-canvas" aria-hidden="true">
+  <canvas id="particles"></canvas>
+  <div class="bg-grid"></div>
+  <div class="bg-orb bg-orb--1"></div>
+  <div class="bg-orb bg-orb--2"></div>
+  <div class="bg-orb bg-orb--3"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="nav" id="navbar">
+  <a href="#hero" class="nav-brand" data-magnetic>
+    <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
+    <span>antonella<em>.dev</em></span>
+  </a>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#about" data-magnetic>Sobre mí</a>
+    <a href="#stack" data-magnetic>Tecnologías</a>
+    <a href="#projects" data-magnetic>Proyectos</a>
+    <a href="#experience" data-magnetic>Experiencia</a>
+    <a href="#certificates" data-magnetic>Certificados</a>
+    <a href="#contact" data-magnetic>Contacto</a>
+  </div>
+
+  <button class="nav-cta" onclick="location.href='#contact'" data-magnetic>
+    Hablemos
+  </button>
+
+  <button class="nav-burger" id="burger" aria-label="Menú" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<main>
+
+  <!-- ============ 1. HERO ============ -->
+  <section class="hero" id="hero">
+    <!-- Video de fondo del Hero: reemplaza la animación "AI Core" anterior.
+         Autoplay, loop, muted y playsinline para reproducción automática en
+         todos los navegadores/móviles. hero.webm primero (más liviano),
+         hero.mp4 como fallback universal. -->
+    <video
+      class="hero__bg-video"
+      autoplay
+      loop
+      muted
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    >
+      <source src="hero.webm" type="video/webm">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+
+    <!-- Overlay oscuro en degradado: mantiene la legibilidad del texto sobre el video -->
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="hero__spotlight" id="heroSpotlight" aria-hidden="true"></div>
+
+    <div class="hero__grid">
+      <div class="hero__copy">
+<p class="hero__intro" data-reveal>Hola, soy</p>
+
+<h1 class="hero__name" data-reveal>
+  <span class="hero__name-line">Antonella</span>
+  <span class="hero__name-line hero__name-line--accent">Dev</span>
+</h1>
+
+<p class="hero__kicker" data-reveal>
+  <span id="heroTypewriter"></span>
+  <span class="hero__typewriter-cursor" aria-hidden="true">|</span>
+</p>
+
+        <div class="hero__actions" data-reveal>
+          <a href="#projects" class="btn btn--primary" data-magnetic>
+            <span>Ver proyectos</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#contact" class="btn btn--outline" data-magnetic>Contacto</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="hero__scroll" aria-label="Bajar a la siguiente sección">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"><div class="hero__scroll-dot"></div></div>
+    </a>
+  </section>
+
+  <!-- ============ 2. SOBRE MÍ ============ -->
+  <section class="about" id="about">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> 01 · Sobre mí</p>
+      <h2 class="section-title">Full-stack, con foco en construir cosas que funcionan bien.</h2>
+    </div>
+
+    <div class="about__intro">
+      <div class="about__intro-copy" data-reveal>
+        <p class="about__lead">
+          Estudio Ingeniería en Sistemas Informáticos y trabajo como Asistente de Proyecto en
+          <strong>Kleur Digital</strong>, coordinando tareas técnicas y de diseño para clientes reales.
+        </p>
+        <p>
+          Python y C++ son los lenguajes con los que más experiencia tengo y en los que he desarrollado la mayor parte de mis proyectos. Además, utilizo HTML, CSS y JavaScript para crear sitios web modernos, responsivos y funcionales.
+        </p>
+
+        <div class="hero__terminal glass">
+          <div class="hero__terminal-bar">
+            <span class="dot dot--red"></span><span class="dot dot--yellow"></span><span class="dot dot--green"></span>
+            <span class="hero__terminal-title">antonella@dev ~ %</span>
+          </div>
+          <div class="hero__terminal-body" id="terminalBody" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="about__intro-visual" data-reveal>
+        <!--
+          Sin foto por ahora: se usa el logo de la marca como tratamiento de identidad,
+          no un estado de error. Para reemplazar por una foto real, dentro de .hero__frame agrega:
+          <img src="profile.jpeg" alt="Foto de Antonella" class="hero__photo">
+          y quita la clase hero__frame--placeholder junto con el <img> del logo.
+        -->
+        <div class="hero__frame glass hero__frame--placeholder">
+          <img src="profile.jpeg" alt="Foto de Antonella" class="hero__photo">
+          <div class="hero__frame-glow"></div>
+          <div class="hero__frame-scan"></div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="about__meta" data-reveal>
+      <div class="about__meta-item">
+        <span class="about__meta-label">Ubicación</span>
+        <p class="about__meta-value">Santa Cruz de la Sierra, Bolivia</p>
+      </div>
+      <div class="about__meta-item">
+        <span class="about__meta-label">Idiomas</span>
+        <p class="about__meta-value">Español / Inglés</p>
+      </div>
+      <div class="about__meta-item">
+        <span class="about__meta-label">Especialidad</span>
+        <p class="about__meta-value">Full-stack — Python / Django y JavaScript</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. TECNOLOGÍAS ============ -->
+  <section class="stack" id="stack">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> 02 · Stack</p>
+      <h2 class="section-title">Tecnologías que uso</h2>
+    </div>
+
+    <div class="stack__marquee" data-reveal>
+      <div class="stack__fade stack__fade--left" aria-hidden="true"></div>
+      <div class="stack__fade stack__fade--right" aria-hidden="true"></div>
+      <div class="stack__track" id="stackTrack">
+        <!-- injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. EXPERIENCIA Y FORMACIÓN ============ -->
+  <section class="experience" id="experience">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> 03 · Experiencia y Formación</p>
+      <h2 class="section-title">Dónde he trabajado y dónde estoy formándome.</h2>
+    </div>
+
+    <div class="experience__grid">
+      <article class="exp-panel glass" data-reveal>
+        <span class="exp-panel__kicker">Experiencia</span>
+        <h3 class="exp-panel__title">Asistente de Proyecto</h3>
+        <p class="exp-panel__org">Kleur Digital · Jornada parcial · Presencial</p>
+        <p class="exp-panel__desc">Apoyo en la gestión y ejecución de proyectos digitales, coordinando tareas
+          técnicas y de diseño para clientes, con foco en cumplimiento de plazos y calidad de entrega.</p>
+        <span class="exp-panel__date">Nov 2025 — Actualidad</span>
+      </article>
+
+      <article class="exp-panel glass" data-reveal>
+        <span class="exp-panel__kicker">Formación</span>
+        <h3 class="exp-panel__title">Ingeniería en Sistemas Informáticos</h3>
+        <p class="exp-panel__org">Universidad del Valle (BO)</p>
+        <p class="exp-panel__desc">Enfocada en desarrollo de software, automatización de procesos y gestión
+          eficiente de la información.</p>
+        <span class="exp-panel__date">Feb 2026 — Actualidad</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 5. PROYECTOS ============ -->
+  <section class="projects" id="projects">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> 04 · Proyectos</p>
+      <h2 class="section-title">Cosas que construí y de las que me enorgullezco.</h2>
+    </div>
+
+    <!--
+      Todos los proyectos comparten exactamente la misma jerarquía visual: es una galería,
+      no un ranking. El enlace de "Behance" abajo apunta al perfil general; si cada
+      proyecto tiene su propio caso publicado, reemplaza el href de cada .project-tile
+      por la URL específica de esa pieza.
+    -->
+    <div class="projects__grid" id="projectsGrid">
+
+      <a href="https://www.behance.net/antonelladev" target="_blank" rel="noopener" class="project-tile" data-reveal>
+        <div class="project-tile__media">
+          <img src="assets/projects/personal-blog.jpg" alt="Proyecto Personal Blog" loading="lazy" onerror="this.parentElement.classList.add('project-tile__media--empty')">
+        </div>
+        <div class="project-tile__overlay">
+          <span class="project-tile__tag">Web app</span>
+          <h3 class="project-tile__title">Personal Blog</h3>
+          <div class="project-tile__stack"><span>TypeScript</span><span>Vite</span><span>Prisma</span></div>
+          <span class="project-tile__cta">Ver en Behance ↗</span>
+        </div>
+      </a>
+
+      <a href="https://www.behance.net/antonelladev" target="_blank" rel="noopener" class="project-tile" data-reveal>
+        <div class="project-tile__media">
+          <img src="assets/projects/radio-cloud.jpg" alt="Proyecto Radio Cloud" loading="lazy" onerror="this.parentElement.classList.add('project-tile__media--empty')">
+        </div>
+        <div class="project-tile__overlay">
+          <span class="project-tile__tag">Infraestructura</span>
+          <h3 class="project-tile__title">Radio Cloud</h3>
+          <div class="project-tile__stack"><span>Docker</span><span>Linux</span><span>Shell</span></div>
+          <span class="project-tile__cta">Ver en Behance ↗</span>
+        </div>
+      </a>
+
+      <a href="https://www.behance.net/antonelladev" target="_blank" rel="noopener" class="project-tile" data-reveal>
+        <div class="project-tile__media">
+          <img src="assets/projects/antonelladev.jpg" alt="Proyecto antonelladev" loading="lazy" onerror="this.parentElement.classList.add('project-tile__media--empty')">
+        </div>
+        <div class="project-tile__overlay">
+          <span class="project-tile__tag">Plataforma personal</span>
+          <h3 class="project-tile__title">antonelladev</h3>
+          <div class="project-tile__stack"><span>Python</span><span>Django</span><span>HTML</span></div>
+          <span class="project-tile__cta">Ver en Behance ↗</span>
+        </div>
+      </a>
+
+      <a href="https://www.behance.net/antonelladev" target="_blank" rel="noopener" class="project-tile" data-reveal>
+        <div class="project-tile__media">
+          <img src="assets/projects/unika-web.jpg" alt="Proyecto Unika Web" loading="lazy" onerror="this.parentElement.classList.add('project-tile__media--empty')">
+        </div>
+        <div class="project-tile__overlay">
+          <span class="project-tile__tag">Cliente real</span>
+          <h3 class="project-tile__title">Unika Web</h3>
+          <div class="project-tile__stack"><span>WordPress</span><span>Elementor</span><span>CSS</span></div>
+          <span class="project-tile__cta">Ver en Behance ↗</span>
+        </div>
+      </a>
+
+      <a href="https://www.behance.net/antonelladev" target="_blank" rel="noopener" class="project-tile" data-reveal>
+        <div class="project-tile__media">
+          <img src="assets/projects/le-petit.jpg" alt="Proyecto Le Petit Bon Appétit" loading="lazy" onerror="this.parentElement.classList.add('project-tile__media--empty')">
+        </div>
+        <div class="project-tile__overlay">
+          <span class="project-tile__tag">Proyecto universitario</span>
+          <h3 class="project-tile__title">Le Petit Bon Appétit</h3>
+          <div class="project-tile__stack"><span>HTML</span><span>CSS</span></div>
+          <span class="project-tile__cta">Ver en Behance ↗</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/antonelladev" target="_blank" rel="noopener" class="project-tile project-tile--more" data-reveal>
+        <div class="project-tile__overlay project-tile__overlay--static">
+          <span class="project-tile__tag">+ 21 repositorios más</span>
+          <h3 class="project-tile__title">Space Invaders · Snake · Pacman</h3>
+          <p class="project-tile__desc">Serie semanal de juegos clásicos reconstruidos para practicar lógica,
+            estructuras de datos y C++.</p>
+          <span class="project-tile__cta">Ver todo en GitHub ↗</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ 6. CERTIFICADOS ============ -->
+  <section class="certificates" id="certificates">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> 05 · Certificados</p>
+      <h2 class="section-title">Aprendizaje respaldado.</h2>
+    </div>
+
+    <div class="certificates__slider" data-reveal>
+      <button class="cert-nav cert-nav--prev" id="certPrev" aria-label="Certificado anterior">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <!--
+        Cada certificado es una tarjeta <a class="cert-card glass"> con exactamente
+        dos partes: una vista previa (.cert-card__media, que intenta renderizar el
+        PDF con <object> y si el navegador no puede, muestra el placeholder de
+        respaldo definido dentro) y un título debajo (.cert-card__title).
+        Toda la tarjeta enlaza al PDF real y lo abre en una pestaña nueva.
+        Para agregar, quitar o reordenar certificados, duplica/borra/mueve el
+        bloque <a class="cert-card glass">...</a> completo — no depende de
+        ningún índice ni de JS, así que es seguro editar directamente.
+      -->
+      <div class="certificates__track" id="certTrack">
+
+        <a class="cert-card glass" href="assets/certificates/cpp-essentials.pdf" target="_blank" rel="noopener" aria-label="Abrir certificado C++ Essentials en una pestaña nueva">
+          <div class="cert-card__media">
+            <object class="cert-card__preview" data="assets/certificates/cpp-essentials.pdf#toolbar=0&navpanes=0&view=FitH" type="application/pdf" aria-hidden="true">
+              <div class="cert-card__fallback">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </div>
+            </object>
+            <span class="cert-card__badge">PDF</span>
+          </div>
+          <h3 class="cert-card__title">C++ Essentials</h3>
+        </a>
+
+        <a class="cert-card glass" href="assets/certificates/introduccion-python.pdf" target="_blank" rel="noopener" aria-label="Abrir certificado Introducción a Python en una pestaña nueva">
+          <div class="cert-card__media">
+            <object class="cert-card__preview" data="assets/certificates/introduccion-python.pdf#toolbar=0&navpanes=0&view=FitH" type="application/pdf" aria-hidden="true">
+              <div class="cert-card__fallback">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </div>
+            </object>
+            <span class="cert-card__badge">PDF</span>
+          </div>
+          <h3 class="cert-card__title">Introducción a Python</h3>
+        </a>
+
+        <a class="cert-card glass" href="assets/certificates/python.pdf" target="_blank" rel="noopener" aria-label="Abrir certificado Python en una pestaña nueva">
+          <div class="cert-card__media">
+            <object class="cert-card__preview" data="assets/certificates/python.pdf#toolbar=0&navpanes=0&view=FitH" type="application/pdf" aria-hidden="true">
+              <div class="cert-card__fallback">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </div>
+            </object>
+            <span class="cert-card__badge">PDF</span>
+          </div>
+          <h3 class="cert-card__title">Python</h3>
+        </a>
+
+        <a class="cert-card glass" href="assets/certificates/logica-programacion-latincode.pdf" target="_blank" rel="noopener" aria-label="Abrir certificado Lógica de Programación LatinCode en una pestaña nueva">
+          <div class="cert-card__media">
+            <object class="cert-card__preview" data="assets/certificates/logica-programacion-latincode.pdf#toolbar=0&navpanes=0&view=FitH" type="application/pdf" aria-hidden="true">
+              <div class="cert-card__fallback">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </div>
+            </object>
+            <span class="cert-card__badge">PDF</span>
+          </div>
+          <h3 class="cert-card__title">Lógica de Programación (LatinCode)</h3>
+        </a>
+
+        <a class="cert-card glass" href="assets/certificates/logica-programacion-univalle.pdf" target="_blank" rel="noopener" aria-label="Abrir certificado Lógica de Programación Universidad del Valle en una pestaña nueva">
+          <div class="cert-card__media">
+            <object class="cert-card__preview" data="assets/certificates/logica-programacion-univalle.pdf#toolbar=0&navpanes=0&view=FitH" type="application/pdf" aria-hidden="true">
+              <div class="cert-card__fallback">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </div>
+            </object>
+            <span class="cert-card__badge">PDF</span>
+          </div>
+          <h3 class="cert-card__title">Lógica de Programación (Universidad del Valle)</h3>
+        </a>
+
+        <a class="cert-card glass" href="assets/certificates/programacion-c-cpp-esp32.pdf" target="_blank" rel="noopener" aria-label="Abrir certificado Programación C/C++ ESP32 en una pestaña nueva">
+          <div class="cert-card__media">
+            <object class="cert-card__preview" data="assets/certificates/programacion-c-cpp-esp32.pdf#toolbar=0&navpanes=0&view=FitH" type="application/pdf" aria-hidden="true">
+              <div class="cert-card__fallback">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </div>
+            </object>
+            <span class="cert-card__badge">PDF</span>
+          </div>
+          <h3 class="cert-card__title">Programación C/C++ ESP32</h3>
+        </a>
+
+        <a class="cert-card glass" href="assets/certificates/python-django.pdf" target="_blank" rel="noopener" aria-label="Abrir certificado Python y Django en una pestaña nueva">
+          <div class="cert-card__media">
+            <object class="cert-card__preview" data="assets/certificates/python-django.pdf#toolbar=0&navpanes=0&view=FitH" type="application/pdf" aria-hidden="true">
+              <div class="cert-card__fallback">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 2v5h5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              </div>
+            </object>
+            <span class="cert-card__badge">PDF</span>
+          </div>
+          <h3 class="cert-card__title">Python y Django</h3>
+        </a>
+
+      </div>
+
+      <button class="cert-nav cert-nav--next" id="certNext" aria-label="Siguiente certificado">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 3l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ 7. CONTACTO ============ -->
+  <section class="contact" id="contact">
+    <div class="contact__inner glass" data-reveal>
+      <div class="contact__copy">
+        <p class="eyebrow"><span class="eyebrow__dot"></span> 06 · Contacto</p>
+        <h2 class="section-title">Construyamos algo juntos.</h2>
+        <p class="contact__lead">Ya sea una idea, una oportunidad laboral o solo para saludar — mi bandeja
+          de entrada está abierta.</p>
+
+        <div class="contact__links">
+          <a href="mailto:linda@antonella.dev" class="contact__link" data-magnetic>
+            <span>Email</span> linda@antonella.dev
+          </a>
+          <a href="https://www.linkedin.com/in/linda-rodriguez-languidey" target="_blank" rel="noopener" class="contact__link" data-magnetic>
+            <span>LinkedIn</span> /in/linda-rodriguez-languidey
+          </a>
+          <a href="https://github.com/antonelladev" target="_blank" rel="noopener" class="contact__link" data-magnetic>
+            <span>GitHub</span> @antonelladev
+          </a>
+        </div>
+      </div>
+
+      <form class="contact__form" id="contactForm">
+        <div class="form-field">
+          <input type="text" id="name" name="name" required placeholder=" ">
+          <label for="name">Nombre</label>
+        </div>
+        <div class="form-field">
+          <input type="email" id="email" name="email" required placeholder=" ">
+          <label for="email">Correo</label>
+        </div>
+        <div class="form-field">
+          <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
+          <label for="message">Mensaje</label>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full" data-magnetic>
+          <span id="formBtnText">Enviar mensaje</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="contact__form-note" id="formNote" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <a href="#hero" class="footer__logo" data-magnetic>
+      <img src="logo.png" alt="Logo" class="footer__logo-img" onerror="this.style.display='none'">
+      <span>antonella<span class="navbar__logo-accent">.dev</span></span>
+    </a>
+
+    <!--
+      Reemplaza los href de Behance, Figma y Dribbble por los perfiles reales si el
+      usuario de cada plataforma es distinto de "antonelladev".
+    -->
+    <nav class="footer__social" aria-label="Redes sociales">
+      <a href="https://www.linkedin.com/in/linda-rodriguez-languidey" target="_blank" rel="noopener" aria-label="LinkedIn" data-magnetic data-tip="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+      <a href="https://github.com/antonelladev" target="_blank" rel="noopener" aria-label="GitHub" data-magnetic data-tip="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.74.5 12.03c0 5.05 3.29 9.32 7.86 10.83.57.1.79-.25.79-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.72.08-.7.08-.7 1.16.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.6.24 2.77.12 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.16 0 1.56-.02 2.82-.02 3.2 0 .31.21.66.8.55A10.53 10.53 0 0 0 23.5 12c0-6.28-5.23-11.5-11.5-11.5z"/></svg>
+      </a>
+      <a href="https://www.figma.com/@antonella_dev" target="_blank" rel="noopener" aria-label="Figma" data-magnetic data-tip="Figma">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4zm0-8H4c0-2.2 1.8-4 4-4h4v4H8zm0-8H4c0-2.2 1.8-4 4-4h4v4H8zm4-4h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4V4zm4 8c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4z"/></svg>
+      </a>
+      <a href="https://www.behance.net/antonelladev" target="_blank" rel="noopener" aria-label="Behance" data-magnetic data-tip="Behance">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 10.6c1.1-.5 1.7-1.4 1.7-2.7 0-2.4-1.8-3.4-4-3.4H.6v14.9h5.2c2.4 0 4.6-1.1 4.6-3.8 0-1.6-.8-2.6-2.6-3zM3.1 6.7h2.7c1 0 1.9.3 1.9 1.5s-.7 1.6-1.9 1.6H3.1V6.7zm3 8.3H3.1v-3.5h3.1c1.2 0 2.1.5 2.1 1.7 0 1.4-1 1.8-2.2 1.8zm10.3-9h5.9v1.3h-5.9V6zm6.5 6.9c0-2.9-1.7-5-4.7-5-2.9 0-4.9 2.2-4.9 5.1 0 3 1.9 5 4.9 5 2.3 0 3.9-1 4.5-3.2h-2.3c-.2.7-1 1.2-2.1 1.2-1.5 0-2.4-.9-2.5-2.4h7v-.7zm-6.9-1.1c.2-1.2 1-2 2.2-2s1.9.8 2 2h-4.2z"/></svg>
+      </a>
+      
+      <a href="https://dribble.com/antonelladev" target="_blank" rel="noopener" aria-label="Dribbble" data-magnetic data-tip="Dribbble">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.6.5.5 5.6.5 12S5.6 23.5 12 23.5 23.5 18.4 23.5 12 18.4.5 12 .5zm7.6 5.4a9.5 9.5 0 0 1 2.2 6c-.3-.1-3.4-.7-6.6-.3-.1-.3-.2-.6-.4-1a25 25 0 0 0-.7-1.6c3.5-1.4 5.1-3.5 5.5-3.1zM12 2.4c2.2 0 4.3.8 5.9 2.2-.3.4-1.7 2.3-5.1 3.6a49 49 0 0 0-3.6-5.5c1-.2 1.9-.3 2.8-.3zM7.2 3.4a44 44 0 0 1 3.6 5.5C6.5 10 2.6 10 2.2 10a9.6 9.6 0 0 1 5-6.6zM2 12v-.4c.4 0 5 .1 9.6-1.3l.6 1.2a29 29 0 0 0-6.8 9.2A9.5 9.5 0 0 1 2 12zm5.1 8.1a26.7 26.7 0 0 1 6.3-8.6c1.6 4.4 2.3 8 2.4 8.9a9.5 9.5 0 0 1-8.7-.3zm10.6-1.2c-.1-.5-.7-4-2.2-8.4 3 0 5.6.7 5.9.8a9.6 9.6 0 0 1-3.7 7.6z"/></svg>
+      </a>
+      <a href="mailto:linda@antonella.dev" aria-label="Email" data-magnetic data-tip="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </nav>
+
+    <p class="footer__copy">© <span id="year"></span> Antonella Dev. Diseñado y construido con curiosidad.</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 11l5-5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
